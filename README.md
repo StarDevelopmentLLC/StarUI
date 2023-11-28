@@ -1,5 +1,5 @@
 # StarUI
-This is the Minecraft based library focused on creating and maintaining inventory based UIs
+This is the Minecraft based library focused on creating and maintaining inventory based UIs  
 [![](https://jitpack.io/v/StarDevelopmentLLC/StarUI.svg)](https://jitpack.io/#StarDevelopmentLLC/StarUI)
 ## To use this Library
 You must add JitPack as a repo, below is for Gradle  
