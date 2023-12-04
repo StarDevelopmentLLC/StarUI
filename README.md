@@ -16,4 +16,4 @@ dependencies {
     implementation 'com.github.StarDevelopmentLLC:StarUI:1.0.0-alpha.1'
 }
 ```  
-This library only requires the Spigot API. StarLib and StarMCLib are not required nor used in this library.
+This plugin only requires the Spigot API if you want to develop using it. StarLib and StarMCLib are not required nor used in this library.
