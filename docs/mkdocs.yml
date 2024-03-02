@@ -1,0 +1,25 @@
+site_name: StarUI Wiki
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.path
+    - content.code.copy
+    - content.code.annotate
+nav:
+  - Home: 'index.md'
+  - Command: 'command.md'
+  - Installation: 'installation.md'
+  - Usage: 
+      - GuiManager: 'guimanager.md'
+      - 'Creating Guis': 'creatingguis.md'
+repo_url: 'https://github.com/StarDevelopmentLLC/StarUI'
+repo_name: 'StarUI'
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
