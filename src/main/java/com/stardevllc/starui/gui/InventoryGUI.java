@@ -97,6 +97,10 @@ public class InventoryGUI implements InventoryHandler {
         if (e.getSlot() != e.getRawSlot()) {
             return;
         }
+
+        if (this.slots.length < e.getRawSlot()) {
+            return;
+        }
         
         e.setCancelled(true); //TODO This will have to be changed when the InsertElement is implemented
         
