@@ -90,6 +90,10 @@ public class InventoryGUI implements InventoryHandler {
     
     @Override
     public void onClick(InventoryClickEvent e) {
+        if (e.getRawSlot() < 0) {
+            return;
+        }
+        
         if (e.getSlot() != e.getRawSlot()) {
             return;
         }
