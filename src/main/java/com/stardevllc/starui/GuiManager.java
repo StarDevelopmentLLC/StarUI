@@ -1,7 +1,9 @@
 package com.stardevllc.starui;
 
 import com.stardevllc.starui.gui.InventoryGUI;
+import com.stardevllc.starui.gui.UpdatingGUI;
 import com.stardevllc.starui.handler.InventoryHandler;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -22,6 +24,12 @@ public class GuiManager implements Listener {
 
     public GuiManager(JavaPlugin plugin) {
         this.plugin = plugin;
+
+        Bukkit.getScheduler().runTaskTimer(plugin, () -> new HashMap<>(activeHandlers).forEach((inv, handler) -> {
+            if (handler instanceof UpdatingGUI updatingGUI) {
+                updatingGUI.update();
+            }
+        }), 20L, 1L);
     }
 
     public void setup() {

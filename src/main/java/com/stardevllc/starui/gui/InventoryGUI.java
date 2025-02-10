@@ -13,13 +13,17 @@ import org.bukkit.event.inventory.InventoryDragEvent;
 import org.bukkit.event.inventory.InventoryOpenEvent;
 import org.bukkit.inventory.Inventory;
 
+import java.util.UUID;
+
 public class InventoryGUI implements InventoryHandler {
     
     protected final Inventory inventory;
     protected final Slot[] slots;
     protected final int rows;
+    protected UUID playerUUID;
 
-    public InventoryGUI(int rows, String title) {
+    public InventoryGUI(int rows, String title, UUID player) {
+        this.playerUUID = player;
         this.rows = rows;
         if (rows < 1 || rows > 6) {
             throw new IllegalArgumentException("Rows value is out of range, it can only be between 1 to 6.");
@@ -31,6 +35,32 @@ public class InventoryGUI implements InventoryHandler {
         for (int i = 0; i < this.slots.length; i++) {
             slots[i] = new Slot(i);
         }
+    }
+    
+    public InventoryGUI(int rows, String title) {
+        this(rows, title, null);
+    }
+    
+    public void createItems() {
+        
+    }
+    
+    public void update() {
+        if (this.playerUUID == null) {
+            return;
+        }
+        
+        Player player = Bukkit.getPlayer(this.playerUUID);
+        if (player == null) {
+            return;
+        }
+        
+        for (Slot slot : this.slots) {
+            slot.setElement(null);
+        }
+        
+        createItems();
+        decorate(player);
     }
 
     public void setElement(int index, Element element) {
