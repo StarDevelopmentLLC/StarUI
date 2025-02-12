@@ -14,6 +14,20 @@ public class Button extends Element {
     protected Consumer<InventoryClickEvent> eventConsumer;
     protected Sound clickSound;
     protected float pitch;
+    
+    public Button() {}
+    
+    public Button(Function<Player, ItemStack> iconCreator, Consumer<InventoryClickEvent> eventConsumer, Sound clickSound, float pitch) {
+        this.iconCreator = iconCreator;
+        this.eventConsumer = eventConsumer;
+        this.clickSound = clickSound;
+        this.pitch = pitch;
+    }
+    
+    public Button(Function<Player, ItemStack> iconCreator, Consumer<InventoryClickEvent> eventConsumer) {
+        this.iconCreator = iconCreator;
+        this.eventConsumer = eventConsumer;
+    }
 
     public Button consumer(Consumer<InventoryClickEvent> consumer) {
         this.eventConsumer = consumer;
