@@ -4,6 +4,7 @@ import com.stardevllc.starui.gui.InventoryGUI;
 import com.stardevllc.starui.gui.UpdatingGUI;
 import com.stardevllc.starui.handler.InventoryHandler;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.HumanEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -85,8 +86,8 @@ public class GuiManager implements Listener {
         return this.activeHandlers.get(inventory);
     }
 
-    public void openGUI(InventoryGUI gui, Player player) {
-        gui.decorate(player);
+    public void openGUI(InventoryGUI gui, HumanEntity player) {
+        gui.decorate((Player) player);
         Inventory inventory = gui.getInventory();
         this.activeHandlers.put(inventory, gui);
         player.openInventory(inventory);
