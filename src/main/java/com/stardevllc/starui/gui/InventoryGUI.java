@@ -56,6 +56,11 @@ public class InventoryGUI implements InventoryHandler {
         }
         
         for (Slot slot : this.slots) {
+            if (slot.getElement() != null) {
+                if (!slot.getElement().isDeleteOnUpdate()) {
+                    continue;
+                }
+            }
             slot.setElement(null);
         }
         
@@ -106,8 +111,11 @@ public class InventoryGUI implements InventoryHandler {
 
     public void decorate(Player player) {
         for (int index = 0; index < this.slots.length; index++) {
-            if (slots[index].getElement() != null) {
-                this.inventory.setItem(index, slots[index].getElement().getIconCreator().apply(player));
+            Element element = slots[index].getElement();
+            if (element != null) {
+                if (!element.isDeleteOnUpdate()) {
+                    this.inventory.setItem(index, element.getIconCreator().apply(player));
+                }
             } else {
                 this.inventory.setItem(index, null);
             }

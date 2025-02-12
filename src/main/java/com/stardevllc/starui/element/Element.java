@@ -10,6 +10,7 @@ public class Element {
     protected Function<Player, ItemStack> iconCreator;
     protected boolean allowInsert;
     protected boolean isReplaceable;
+    protected boolean deleteOnUpdate = true;
 
     public Element iconCreator(Function<Player, ItemStack> iconCreator) {
         this.iconCreator = iconCreator;
@@ -27,7 +28,11 @@ public class Element {
     public boolean isAllowInsert() {
         return allowInsert;
     }
-    
+
+    public boolean isDeleteOnUpdate() {
+        return deleteOnUpdate;
+    }
+
     public Element setAllowInsert(boolean allowInsert) {
         this.allowInsert = allowInsert;
         return this;
@@ -35,6 +40,11 @@ public class Element {
     
     public Element setReplaceable(boolean replaceable) {
         isReplaceable = replaceable;
+        return this;
+    }
+
+    public Element setDeleteOnUpdate(boolean deleteOnUpdate) {
+        this.deleteOnUpdate = deleteOnUpdate;
         return this;
     }
 }
