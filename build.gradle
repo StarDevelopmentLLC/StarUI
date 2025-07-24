@@ -3,7 +3,7 @@ plugins {
     id 'maven-publish'
 }
 
-group 'com.github.StarDevelopmentLLC'
+group 'com.stardevllc'
 version '0.1.4'
 
 repositories {
@@ -18,6 +18,17 @@ repositories {
 }
 
 publishing {
+    repositories {
+        maven {
+            name="stardev"
+            url="https://repo.stardevllc.com/releases"
+            credentials(PasswordCredentials)
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+    
     publications {
         maven(MavenPublication) {
             from components.java
@@ -33,7 +44,12 @@ java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
+
+    withJavadocJar()
+    withSourcesJar()
 }
 
 tasks.compileJava.dependsOn(clean)
+tasks.publishToMavenLocal.dependsOn(jar)
 tasks.build.finalizedBy(publishToMavenLocal)
+tasks.build.finalizedBy(publish)
